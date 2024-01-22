@@ -15,6 +15,9 @@ getId(id){
 getEmail(email){
   return this.email
 }
+getRole() {
+  return "Employee"
+}
 
 }
 
