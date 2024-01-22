@@ -18,7 +18,5 @@ getEmail(email){
 getRole() {
   return "Employee"
 }
-
 }
-
 module.exports = Employee
