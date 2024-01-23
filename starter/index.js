@@ -35,7 +35,7 @@ const validateEmail = (email) => {
   return emailRegex.test(email) || "Please enter a valid email.";
 };
 
-const managerQuestions = [
+const managerQuestions = () => inquirer.prompt([
   {
     type: "input",
     name: "name",
@@ -59,9 +59,18 @@ const managerQuestions = [
     message: "Manager's office number: ",
     validate: validateOfficeNumber,
   },
-];
+])
+.then ((managerAnswers) => {
+  const manager = new Manager (
+    managerAnswers.name,
+    managerAnswers.id,
+    managerAnswers.email,
+    managerAnswers.officeNumber,
+  )
+})
+teamArray.push(manager)
 
-const engineerQuestions = [
+const engineerQuestions = () => inquirer.prompt( [
   {
     type: "input",
     name: "name",
@@ -84,9 +93,19 @@ const engineerQuestions = [
     name: "github",
     message: "Engineer's GitHub username: ",
   },
-];
+]) 
+. then ((engineerAnswers) => {
+  const engineer = new Engineer (
+    engineerAnswers.name,
+    engineerAnswers.id,
+    engineerAnswers.email,
+    engineerAnswers.github
+  )
+} )
+teamArray.push(engineer)
 
-const internQuestions = [
+
+const internQuestions = () => inquirer.prompt([
   {
     type: "input",
     name: "name",
@@ -109,4 +128,13 @@ const internQuestions = [
     name: "school",
     message: "Intern's school: ",
   },
-];
+])
+.then ((internAnswers) => {
+  const intern = new Intern (
+    engineerAnswers.name,
+    engineerAnswers.id,
+    engineerAnswers.email,
+    engineerAnswers.school,
+  )
+} )
+teamArray.push(intern)
